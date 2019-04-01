@@ -1,0 +1,202 @@
+/* here you can put your own css to customize and override the theme */
+.clr{
+    clear:both;
+}
+.pickDate{
+    list-style-type: none;
+}
+.pickDate li{
+    float:left;
+    padding-left: 18px;
+}
+.pickDate li span{
+    height: 40px;
+    line-height: 40px
+}
+.pickDate li label, .pickDate li button{
+    margin-top: 5px;
+}
+.divPickDate{
+    margin-top: 10px;
+
+}
+
+.tl_tag_select{
+/*    margin-left: -94px;
+    width: 1342px;*/
+    height: 45px;
+    background-color: #E9EDEF;
+}
+.tl_tag_select div{
+    color: #1D7346;
+/*    width:250px;*/
+    padding: 0px 15px;
+    font-size: 15px;    
+    cursor: pointer;
+    float:left;
+    height: 45px;
+    line-height: 45px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.tl_tag_select div.active{
+
+    border-bottom: 1px solid red;
+
+}
+
+.pmh_method1{
+    background-color: #EEEEEE;
+    width: 520px;
+    border-radius: 2%;
+    margin: auto;
+}
+
+.row-fluid1{
+    padding: 10px 20px;
+    margin-left: 55px;
+    margin-bottom: 10px;
+}
+.row-fluid1 input{
+    border-radius: 5%;
+    width: 346px;
+    padding-left: 44px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border: none;
+}
+
+.wrap-icon-fullname2:before{
+    content: "\f007";
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 6px;
+    left: 16px;
+    color:#d3d3d3;
+    font-size: 19px
+}
+.wrap-icon-fullname2 {
+    position: relative;
+}
+.wrap-icon-email2:before{
+    content: "\f0e0";
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 6px;
+    left: 13px;
+    color:#d3d3d3;
+    font-size: 17px
+}
+.wrap-icon-email2 {
+    position: relative;
+}
+
+
+.wrap-icon-phone2:before{
+    content: "\f095";
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    color:#d3d3d3;
+    font-size: 19px
+}
+.wrap-icon-phone2 {
+    position: relative;
+}
+
+.wrap-icon-address2:before{
+    content: "\f041";
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 7px;
+    left: 16px;
+    color:#d3d3d3;
+    font-size: 19px
+}
+.wrap-icon-address2 {
+    position: relative;
+}
+
+.wrap-icon-province2:before{
+    content: "\f192";
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 4px;
+    left: 16px;
+    color:#d3d3d3;
+    font-size: 19px
+}
+.wrap-icon-province2, .wrap-icon-district2 {
+    position: relative;
+}
+
+
+.wrap-icon-district2:before{
+    content: "\f124";
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 5px;
+    left: 16px;
+    color:#d3d3d3;
+    font-size: 19px
+}
+.wrap-icon-money2:before{
+    content: "\f155";
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 6px;
+    left: 16px;
+    color:#d3d3d3;
+    font-size: 19px
+}
+.wrap-icon-money2 {
+    position: relative;
+}
+.wrap-icon-date2:before{
+    content: "\f073";
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 6px;
+    left: 16px;
+    color:#d3d3d3;
+    font-size: 19px
+}
+.wrap-icon-date2 {
+    position: relative;
+}
+.wrap-icon-course2:before{
+    content: "\f02d";
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 6px;
+    left: 16px;
+    color:#d3d3d3;
+    font-size: 19px
+}
+.wrap-icon-course2 {
+    position: relative;
+}
+.submitmethod1{
+    padding-left: 15px !important;
+    width: 186px !important;
+    border-radius: 0% !important;
+}
+.direct{
+    display: none;
+}
+.combo{
+    display: none;
+}
+.active1{
+        border-bottom: 3px solid red;
+}
+
+.row-fluid2{
+    padding: 10px 20px;
+    margin-left: 55px;
+    margin-bottom: 10px;
+}
+
+
