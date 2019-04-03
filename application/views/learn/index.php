@@ -1,4 +1,10 @@
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
 <script type="text/javascript">
 
     function delete_items()
@@ -17,6 +23,12 @@
 
     }
 
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2({
+            placeholder: 'Tìm kiếm khóa học'
+        });
+
+    });
 </script>
 
 
@@ -112,17 +124,31 @@
                                     </select>
                                 </label>
                             </div>
+
                             <div class="btn-group pull-right">
                                 <form action="<?php echo base_url(); ?>learn/search" method="post">
-                                            <?php if ('comenu' == 'comenu') { ?> 
-                                        <label for="">
-                                            <select size="1" class="form-control input-medium" name="courses_id">
-                                                <option <?php if (isset($courses) && $courses == 0) echo 'selected="selected"'; ?> value="0">Tất cả</option>
-                                                        <?php foreach ($courses as $key => $cour) { ?>
-                                                    <option <?php if (isset($courses_id) && $courses_id == $cour['id']) echo 'selected="selected"'; ?> value="<?php echo $cour['id']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $cour['name']; ?></option>
+                                    <?php if ('comenu' == 'comenu') { ?> 
+                                    <label for="">
+                                    <select size="1" class="form-control js-example-basic-multiple input-medium" name="courses_id" multiple="multiple">
+
+                                    <?php foreach ($courses as $cour) { ?>
+                                        <option 
+                                        <?php if (isset($courses_id) && $courses_id == $cour['id']) echo 'selected="selected"'; ?> value="<?php echo $cour['id']; ?>">
+                                        <?php echo $cour['name']; ?>
+                                        </option>
+                                    <?php } ?>
+
+                                    </select>
+
+                                    <!-- <select size="1" class="form-control input-medium" name="courses_id">
+                                        <option <?php if (isset($courses) && $courses == 0) echo 'selected="selected"'; ?> value="0">Tất cả</option>
+                                        <?php foreach ($courses as $key => $cour) { ?>
+                                            <option <?php if (isset($courses_id) && $courses_id == $cour['id']) echo 'selected="selected"'; ?> value="<?php echo $cour['id']; ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $cour['name']; ?></option> 
                                         <?php } ?>
-                                            </select>					    	
-                                        </label>	
+                                    </select> -->
+
+                                        </label>
+                                        	
                                         <?php }else { ?>                                    
                                         <input type="hidden" name="courses" value="">
                                         <?php } ?>      
@@ -444,3 +470,4 @@ else
 </form>
 <input type="hidden" id="page" value="learn">
 <!-- END CONTENT -->
+
