@@ -309,22 +309,33 @@
                     </a>
                 </li>
     <?php if ($this->admin_id == 36) { ?>
-                    <li class="rate">
-                        <a href="<?php echo base_url(); ?>listpayment">
-                            <i class="fa fa-comments"></i>
-                            <span class="title">
-                                Nhập danh sách nộp tiền qua ngân hàng hoặc nộp tiền trực tiếp
-                            </span>
-                            <span class="selected">
-                            </span>
-                        </a>
-                    </li>
+                <li class="rate">
+                    <a href="<?php echo base_url(); ?>listpayment">
+                        <i class="fa fa-comments"></i>
+                        <span class="title">
+                            Nhập danh sách nộp tiền qua ngân hàng hoặc nộp tiền trực tiếp
+                        </span>
+                        <span class="selected">
+                        </span>
+                    </a>
+                </li>
     <?php } ?>
                 <li class="rate">
                     <a href="<?php echo base_url(); ?>generateCod">
                         <i class="fa fa-comments"></i>
                         <span class="title">
                             Quản lý mã kích hoạt
+                        </span>
+                        <span class="selected">
+                        </span>
+                    </a>
+                </li>
+
+                <li class="rate">
+                    <a href="<?php echo base_url(); ?>generateCod/new_cod_view">
+                        <i class="fa fa-comments"></i>
+                        <span class="title">
+                            Quản lý mã kích hoạt mới
                         </span>
                         <span class="selected">
                         </span>
@@ -374,6 +385,8 @@
                         </span>
                     </a>
                 </li>
+
+                
                 <?php } ?>
         </ul>
         <!-- END SIDEBAR MENU -->

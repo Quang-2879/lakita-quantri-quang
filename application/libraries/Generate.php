@@ -7,6 +7,7 @@ class Generate {
             $characters = '0123456789ABCDEFGHJKLMNOPQRSTUVWXYZ';
         else
             $characters = '0123456789abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ';
+        
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < $length; $i++) {

@@ -17,7 +17,7 @@
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta content="" name="description"/>
         <meta content="" name="author"/>
-
+        <?php $this->output->delete_cache(); ?>
         <?php $this->load->view('common/' . $header); ?>
 
         <!-- END THEME STYLES -->

@@ -8,6 +8,7 @@ class GenerateCod extends CI_Controller {
         if (!isset($this->admin_id) || empty($this->admin_id)) {
             redirect('home/login');
         }
+
     }
 
     function index() {
@@ -62,7 +63,8 @@ class GenerateCod extends CI_Controller {
             'CBKT400' => 'CBKT400',
             'CBKT800' => 'CBKT800',
             'CBKT110' => 'CBKT110',
-            'CBKT130' => 'CBKT130');
+            'CBKT130' => 'CBKT130'
+        );
 
         $methodID = array('cod' => 1, 'bank' => 2, 'direct' => 3);
         $courseID = $this->input->post('courseID');
@@ -81,12 +83,16 @@ class GenerateCod extends CI_Controller {
                 } else {
                     $randStr = $prefix[$courseID] . $this->generate->generateRandomString(5, TRUE);
                 }
-            } else {
+            } 
+            else {
                 $randStr = 'KHC' . $this->generate->generateRandomString(5, TRUE);
             }
+
             while (count($this->lib_mod->load_all('cod_course', '', array('cod' => $randStr), '', '', '')) > 0) {
                 $randStr = $prefix[$courseID] . $this->generate->generateRandomString(5, TRUE);
             }
+
+
             $param['cod'] = $randStr;
 
             if ($courseID == 'combo') {
@@ -105,8 +111,6 @@ class GenerateCod extends CI_Controller {
                 $param['course_id'] = $courseID;
             }
 
-
-
             $param['status'] = 0;
             $param['method'] = $methodID[$method];
             $param['admin_id'] = $this->admin_id;
@@ -124,6 +128,7 @@ class GenerateCod extends CI_Controller {
             $this->lib_mod->insert_log($action);
             $codInserted[] = $randStr;
         }
+        //var_dump($codInserted);die();
         $data['activity'] = 0;
         $data['generated'] = 1;
         $data['codInserted'] = $codInserted;
@@ -133,6 +138,62 @@ class GenerateCod extends CI_Controller {
         // $data['courses'] = $this->lib_mod->load_all('courses', 'id, name', array('status'=>1), '', '', array('sort'=>'desc'));
         $this->load->view('template', $data);
     }
+
+    //view sinh mã mới
+    function new_cod_view(){
+        if ($this->admin_id != 36 && $this->admin_id != 35 && $this->admin_id != 38 && $this->admin_id != 41) {
+            header('Content-Type: text/html; charset=utf-8');
+            echo '<script>alert("Bạn không có quyền truy cập module này."); window.location = "' . base_url() . '"</script>';
+            exit;
+        }
+
+        $data['activity'] = 0;
+        $data['generated'] = 0;
+        //$data['courses'] = $this->lib_mod->load_all('courses', 'name, id', array('status' => 1), '', '', '');
+        $data['header'] = 'list_base_header';
+        $data['footer'] = 'list_base_footer';
+        $data['content'] = 'generateCod/cod_new';
+        // $data['courses'] = $this->lib_mod->load_all('courses', '', array('status' => 1), '', '', array('course_code' => 'desc'));
+        $this->load->view('template', $data);
+    }
+
+    //hàm sinh mã mới
+    function generate_new(){
+        if ($this->admin_id != 36 && $this->admin_id != 35) {
+            header('Content-Type: text/html; charset=utf-8');
+            echo '<script>alert("Bạn không có quyền truy cập module này."); window.location = "' . base_url() . '"</script>';
+            exit;
+        }
+
+        $number = $this->input->post('number');
+        $reason = $this->input->post('reason');
+        $this->load->library('generate');
+        for ($i = 0; $i < intval($number); $i++) {
+            $search_array = array('first' => 1, 'second' => 4);
+            $cod = $this->generate->generateRandomString(10, TRUE);
+
+            while (count($this->lib_mod->load_all('cod_course_new', '', array('cod' => $cod), '', '', '')) > 0) {
+                $cod = 'COD' . $this->generate->generateRandomString(7, TRUE);
+            }
+
+            $param['cod'] = $cod;
+            $param['status'] = 0;
+
+            $this->db->insert('cod_course_new', $param);
+
+            $cod_add[] = $cod;
+        }
+            // echo '<pre>';
+            // print_r($cod_add);die();
+        $data['activity'] = 0;
+        $data['generated'] = 1;
+        $data['cod_add'] = $cod_add;
+        $data['header'] = 'list_base_header';
+        $data['footer'] = 'list_base_footer';
+        $data['content'] = 'generateCod/cod_new';
+        $this->load->view('template', $data);
+    }
+
 
     function checkCod() {
         if ($this->admin_id != 38 && $this->admin_id != 35 && $this->admin_id != 41) {
@@ -243,8 +304,6 @@ class GenerateCod extends CI_Controller {
         $num_course = count($coursecombo);
         $courseID = array_shift($coursecombo);
         $coursecombo_id = implode(',', $coursecombo);
-
-
 
         $prefix = 'CB' . $num_course . '00';
         $methodID = array('cod' => 1, 'bank' => 2, 'direct' => 3);
